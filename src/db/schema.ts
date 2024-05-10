@@ -1,19 +1,21 @@
-import { boolean } from "drizzle-orm/mysql-core";
-import { text } from "drizzle-orm/sqlite-core";
-import { integer } from "drizzle-orm/sqlite-core";
-import { sqliteTable } from "drizzle-orm/sqlite-core";
-import { tree } from "next/dist/build/templates/app-page";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+
+export const places = sqliteTable("places", {
+  id: integer("id").notNull().primaryKey({ autoIncrement: true }),
+  name: text("name").notNull(),
+});
 
 export const monsters = sqliteTable("monsters", {
   id: integer("id").notNull().primaryKey({ autoIncrement: true }),
   name: text("name", { length: 50 }).notNull(),
   hp: integer("hp").notNull(),
-  attack: integer("attack").notNull(),
+  level: integer("level").notNull(),
 });
 
 export const me = sqliteTable("me", {
   id: integer("id").notNull().primaryKey(),
-  hp: integer("hp").notNull(),
+  hp: integer("hp").notNull().default(100),
+  gold: integer("gold").notNull().default(50),
 });
 
 export const weapons = sqliteTable("weapons", {
