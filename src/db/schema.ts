@@ -16,6 +16,11 @@ export const me = sqliteTable("me", {
   id: integer("id").notNull().primaryKey(),
   hp: integer("hp").notNull().default(100),
   gold: integer("gold").notNull().default(50),
+  xp: integer("xp").notNull().default(0),
+  equipped: integer("equipped")
+    .default(1)
+    .notNull()
+    .references(() => weapons.id),
 });
 
 export const weapons = sqliteTable("weapons", {

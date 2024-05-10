@@ -6,17 +6,17 @@ async function seed() {
     .insert(places)
     .values([{ name: "Town Square" }, { name: "Store" }, { name: "Caves" }]);
 
-  await db.insert(me).values({
-    hp: 100,
-    gold: 50,
-  });
-
   await db.insert(weapons).values([
     { name: "stick", attack: 5, inInventory: true, inStore: false },
     { name: "dagger", attack: 30 },
     { name: "claw hammer", attack: 50 },
     { name: "sword", attack: 100 },
   ]);
+
+  await db.insert(me).values({
+    hp: 100,
+    gold: 50,
+  });
 
   await db.insert(monsters).values([
     { name: "slime", hp: 15, level: 2 },
