@@ -1,12 +1,12 @@
-import React from "react";
-import StatsRibbon from "./_components/StatsRibbon";
+import { ButtonHub, StatsRibbon, TextBlock, Alert } from "./_components";
 
 const HomePage = () => {
   return (
-    <div className="w-7/12 bg-slate-200 rounded-md p-5 shadow-sm">
+    <div className="w-7/12 bg-sky-900 rounded-md p-5 shadow-sm flex flex-col space-y-3">
       <StatsRibbon />
-      <div>Buttons</div>
-      <div>Text</div>
+      <ButtonHub />
+      <Alert />
+      <TextBlock />
     </div>
   );
 };

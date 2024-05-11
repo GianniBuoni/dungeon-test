@@ -3,6 +3,7 @@ import { me, weapons } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import React from "react";
 import { capFirst } from "../_lib/utils";
+import { myCard } from "../_styles/clsx";
 
 const StatsRibbon = async () => {
   const data = await db
@@ -15,7 +16,7 @@ const StatsRibbon = async () => {
   const weapon = capFirst(data[0].weapons.name);
 
   return (
-    <div className="flex space-x-5">
+    <div className={`flex space-x-5 font-extrabold ${myCard}`}>
       <p>XP: {stats.xp} </p>
       <p>HP: {stats.hp}</p>
       <p>Gold: {stats.gold}</p>
