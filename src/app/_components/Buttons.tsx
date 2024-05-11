@@ -8,7 +8,7 @@ interface Props {
 const Buttons = ({ children }: Props) => {
   return (
     <button
-      className="btn btn-primary btn-sm"
+      className="btn btn-base-900 btn-sm rounded-md hover:btn-neutral transition-colors"
       onClick={() => console.log("clicked")}
     >
       {children}
