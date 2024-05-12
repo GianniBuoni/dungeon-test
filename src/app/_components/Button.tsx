@@ -4,13 +4,13 @@ import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
-  id: number;
-  funct: (id: number) => void;
+  id?: number;
+  funct: (id?: number) => void;
 }
 
 const Button = ({ children, id, funct }: Props) => {
   const router = useRouter();
-  const handleClick = (input: number) => {
+  const handleClick = (input?: number) => {
     funct(input);
     router.refresh();
   };
