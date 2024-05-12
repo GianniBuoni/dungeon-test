@@ -5,7 +5,7 @@ import { myCard } from "./_styles/myClasses";
 
 const HomePage = () => {
   return (
-    <div className={`${myCard} space-y-3`}>
+    <div className={`${myCard} space-y-3 w-7/12`}>
       <Stats />
       <Places />
       <TextBlock />
