@@ -1,18 +1,17 @@
 "use client";
-import { places } from "@/db/schema";
-import { changePlace } from "@/db/server-actions/postActions";
 import { useRouter } from "next/navigation";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
   id: number;
+  funct: (id: number) => void;
 }
 
-const PlaceButton = ({ children, id }: Props) => {
+const Button = ({ children, id, funct }: Props) => {
   const router = useRouter();
   const handleClick = (input: number) => {
-    changePlace(input);
+    funct(input);
     router.refresh();
   };
   return (
@@ -25,4 +24,4 @@ const PlaceButton = ({ children, id }: Props) => {
   );
 };
 
-export default PlaceButton;
+export default Button;

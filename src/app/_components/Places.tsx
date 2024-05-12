@@ -1,14 +1,15 @@
 import { goPlaces } from "@/db/server-actions/getActions";
-import PlaceButton from "./PlaceButton";
+import { changePlace } from "@/db/server-actions/postActions";
+import Button from "./Button";
 
 const Places = async () => {
   const places = await goPlaces();
   return (
     <div className="space-x-1">
       {places.map((place) => (
-        <PlaceButton key={place.id} id={place.id}>
+        <Button key={place.id} id={place.id} funct={changePlace}>
           {place.name}
-        </PlaceButton>
+        </Button>
       ))}
     </div>
   );
