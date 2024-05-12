@@ -8,6 +8,7 @@ async function seed() {
       { name: "Town Square", isActive: true },
       { name: "Store" },
       { name: "Caves" },
+      { name: "Fight Dragon" },
     ]);
 
   await db.insert(weapons).values([

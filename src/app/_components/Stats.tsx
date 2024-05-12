@@ -5,7 +5,7 @@ import React from "react";
 
 const Stats = () => {
   return (
-    <div className={`${myCard} flex space-x-5 px-5 p-3 bg-slate-700`}>
+    <div className={`${myCard} flex space-x-5 px-5 p-3 bg-base-300`}>
       <p>XP: {currentStats.me.xp}</p>
       <p>HP: {currentStats.me.hp}</p>
       <p>Gold: {currentStats.me.gold}</p>
