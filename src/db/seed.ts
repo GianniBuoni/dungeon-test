@@ -4,12 +4,11 @@ import { me, monsters, places, weapons } from "./schema";
 async function seed() {
   await db
     .insert(places)
-    .values([{ name: "Town Square" }, { name: "Store" }, { name: "Caves" }]);
-
-  await db.insert(me).values({
-    hp: 100,
-    gold: 50,
-  });
+    .values([
+      { name: "Town Square", isActive: true },
+      { name: "Store" },
+      { name: "Caves" },
+    ]);
 
   await db.insert(weapons).values([
     { name: "stick", attack: 5, inInventory: true, inStore: false },
@@ -23,6 +22,10 @@ async function seed() {
     { name: "fanged beast", hp: 60, level: 8 },
     { name: "dragon", hp: 300, level: 20 },
   ]);
+
+  await db.insert(me).values({
+    id: 1,
+  });
 }
 
 seed();
