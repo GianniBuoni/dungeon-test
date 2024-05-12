@@ -1,9 +1,10 @@
-import { currentStats } from "@/app/_lib/globalConstants";
 import { capName } from "@/app/_lib/utils";
 import { myCard } from "@/app/_styles/myClasses";
-import React from "react";
+import { getMe } from "@/db/server-actions/getActions";
 
-const Stats = () => {
+const Stats = async () => {
+  const currentStats = await getMe();
+
   return (
     <div className={`${myCard} flex space-x-5 px-5 p-3 bg-base-300`}>
       <p>XP: {currentStats.me.xp}</p>
