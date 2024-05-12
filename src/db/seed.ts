@@ -2,9 +2,12 @@ import { db } from ".";
 import { me, monsters, places, weapons } from "./schema";
 
 async function seed() {
-  await db
-    .insert(places)
-    .values([{ name: "Town Square" }, { name: "Store" }, { name: "Caves" }]);
+  await db.insert(places).values([
+    { id: 1, name: "Town Square", isActive: true },
+    { id: 2, name: "Store" },
+    { id: 3, name: "Caves" },
+    { id: 4, name: "Fight Dragon" },
+  ]);
 
   await db.insert(weapons).values([
     { name: "stick", attack: 5, inInventory: true, inStore: false },

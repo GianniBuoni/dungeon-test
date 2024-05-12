@@ -1,10 +1,10 @@
-import { ButtonHub, StatsRibbon, TextBlock, Alert } from "./_components";
+import { Alert, MapNav, StatsRibbon, TextBlock } from "./_components";
 
 const HomePage = () => {
   return (
     <div className="w-7/12 bg-neutral rounded-md p-5 shadow-sm flex flex-col space-y-3">
       <StatsRibbon />
-      <ButtonHub />
+      <MapNav />
       <Alert />
       <TextBlock />
     </div>
