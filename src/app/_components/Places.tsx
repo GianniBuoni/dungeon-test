@@ -1,6 +1,6 @@
 import { goPlaces } from "@/db/server-actions/getActions";
 import { changePlace } from "@/db/server-actions/postActions";
-import Button from "./Button";
+import Button from "./PlaceButton";
 
 const Places = async () => {
   const places = await goPlaces();
