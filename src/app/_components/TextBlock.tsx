@@ -1,15 +1,21 @@
 import { activePlace } from "@/db/server-actions/getActions";
 import { myCard } from "../_styles/myClasses";
-import { buyHealth } from "@/db/server-actions/postActions";
+import {
+  buyHealth,
+  buyWeapon,
+  sellWeapon,
+} from "@/db/server-actions/postActions";
+import TransactionButton from "./TransactionButton";
 
 const TextBlock = async () => {
   const currentPlace = await activePlace();
 
   const textMap: {
     text: string;
-    actions?: {
-      name: string;
-      funct: Promise<void>;
+    buttons?: {
+      buttonText: string;
+      goldNeeded?: number;
+      action: () => Promise<void>;
     }[];
   }[] = [
     { text: "Secret location: WELCOME to DUNGEON DIVE!!" },
@@ -18,10 +24,14 @@ const TextBlock = async () => {
     },
     {
       text: "The store has many items for sale! The merchant greets you cordially.",
-      //   actions: [{ name: "Buy Health (10g)", funct: buyHealth() }],
+      buttons: [
+        { buttonText: "Buy Health (10g)", action: buyHealth, goldNeeded: 10 },
+        { buttonText: "Buy Weapon (30g)", action: buyWeapon, goldNeeded: 30 },
+        { buttonText: "Sell Weapon (15g)", action: sellWeapon },
+      ],
     },
     {
-      text: "You enter the caves — there are many monsters! Which one do you attack? ",
+      text: "You enter the caves — there are many monsters! Which one do you attack?",
     },
     {
       text: "Ahhhhhh, a dragon! Will you fight!? Will you prevail!?",
@@ -29,13 +39,19 @@ const TextBlock = async () => {
   ];
 
   return (
-    <div className={`${myCard} bg-base-300`}>
-      {textMap[currentPlace.id].text}
-      {/* {textMap[currentPlace.id].actions?.map((action) => (
-        <button key={action.name} onClick={() => action.funct}>
-          {action.name}
-        </button>
-      ))} */}
+    <div className={`${myCard} bg-base-300 space-y-2`}>
+      <p>{textMap[currentPlace.id].text}</p>
+      <div className="flex space-x-3">
+        {textMap[currentPlace.id].buttons?.map((button) => (
+          <TransactionButton
+            goldNeeded={button.goldNeeded!}
+            key={button.buttonText}
+            action={button.action}
+          >
+            {button.buttonText}
+          </TransactionButton>
+        ))}
+      </div>
     </div>
   );
 };
